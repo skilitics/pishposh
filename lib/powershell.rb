@@ -24,10 +24,12 @@ class PowershellCommand
     params.push("#{script.gsub(working_directory, '.')}.ps1")
 
     script_parameters.each do |param, value|
+      switch_name = param.to_s.camelize(:upper)
+
       # The value is wrapped in single quotes. Any single quotes it contains are escaped with another single quote.
       escaped_value = "'#{value.gsub("'", "''")}'"
 
-      params.push("-#{param.to_s.camelize(:lower)}", escaped_value)
+      params.push("-#{switch_name}", escaped_value)
     end
 
     params.join(' ')
