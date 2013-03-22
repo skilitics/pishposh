@@ -26,10 +26,16 @@ class PowershellCommand
     script_parameters.each do |param, value|
       switch_name = param.to_s.camelize(:upper)
 
-      # The value is wrapped in single quotes. Any single quotes it contains are escaped with another single quote.
-      escaped_value = "'#{value.gsub("'", "''")}'"
+      if !!value == value && value
+        params.push("-#{switch_name}")
+      end
 
-      params.push("-#{switch_name}", escaped_value)
+      if value.instance_of? String
+        # The value is wrapped in single quotes. Any single quotes it contains are escaped with another single quote.
+        escaped_value = "'#{value.gsub("'", "''")}'"
+
+        params.push("-#{switch_name}", escaped_value)
+      end
     end
 
     params.join(' ')
