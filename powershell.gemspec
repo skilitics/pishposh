@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name         = 'powershell'
-  s.version      = '0.1.0'
+  s.version      = '0.1.1'
   s.summary      = 'PowerShell wrapper'
   s.description  = 'Wrapper for calling PowerShell scripts'
   s.authors      = ['Jeff Knaggs']
