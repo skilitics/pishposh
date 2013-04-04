@@ -9,7 +9,7 @@ class PowershellCommand
   end
 
   def parameters
-    params = []
+    params = %w[-NoLogo -NonInteractive]
 
     if execution_policy == :remote_signed
       params.push('-ExecutionPolicy', 'RemoteSigned')
@@ -26,11 +26,13 @@ class PowershellCommand
     script_parameters.each do |param, value|
       switch_name = param.to_s.camelize(:upper)
 
-      if !!value == value && value
-        params.push("-#{switch_name}")
-      end
+      if !!value == value
+        params.push("-#{switch_name}:$#{value}")
+      elsif value.nil?
+        params.push("-#{switch_name} $null")
+      else
+        value = value.to_s
 
-      if value.instance_of? String
         # The value is wrapped in single quotes. Any single quotes it contains are escaped with another single quote.
         escaped_value = "'#{value.gsub("'", "''")}'"
 
