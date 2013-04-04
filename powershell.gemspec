@@ -7,6 +7,4 @@ Gem::Specification.new do |s|
   s.email        = 'jeff.knaggs@skilitix.com'
   s.files        = ['lib/powershell.rb']
   s.homepage     = 'http://github.com/skilitix/powershell'
-
-  s.add_dependency('activesupport', '>= 3.2.12')
 end

@@ -1,5 +1,3 @@
-require 'active_support/core_ext/string/inflections'
-
 class PowershellCommand
   attr_accessor :script, :working_directory, :execution_policy, :script_parameters
 
@@ -24,7 +22,7 @@ class PowershellCommand
     params.push("#{script.gsub(working_directory, '.')}.ps1")
 
     script_parameters.each do |param, value|
-      switch_name = param.to_s.camelize(:upper)
+      switch_name = param.to_s.split('_').map { |x| x.capitalize }.join
 
       if !!value == value
         params.push("-#{switch_name}:$#{value}")
