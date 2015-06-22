@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name         = 'pishposh'
-  s.version      = '0.1.2'
+  s.version      = '0.1.3'
   s.summary      = 'PowerShell wrapper'
   s.description  = 'Wrapper for calling PowerShell scripts'
   s.files        = ['lib/powershell.rb']
