@@ -4,5 +4,5 @@ Gem::Specification.new do |s|
   s.summary      = 'PowerShell wrapper'
   s.description  = 'Wrapper for calling PowerShell scripts'
   s.files        = ['lib/powershell.rb']
-  s.homepage     = 'http://github.com/skilitix/pishposh'
+  s.homepage     = 'http://github.com/skilitics/pishposh'
 end
